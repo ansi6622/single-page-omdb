@@ -2,6 +2,7 @@
   <head>
     <title>Movie Search</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <link rel="stylesheet" href="semantic/dist/semantic.css">
   </head>
   <body>
@@ -38,8 +39,41 @@
           </div>
         </div>
       </div>
-    </div>
-    
+
+
+    <script type="text/x-handlebars" id="movie-summary">
+      {{#each movies}}
+      <a class="step" data-imdbId="{{imdbID}}">
+        <div class="content">
+          <div class="title">
+            {{Title}}
+          </div>
+          <div class="description">
+            {{Year}}
+          </div>
+        </div>
+      </a>
+      {{/each}}
+    </script>
+
+    <script type="text/x-handlebars" id="movie-show">
+      <div class="ui segment">
+        <img class="ui left floated image" src="{{Poster}}">
+        <p>
+            <div class="ui red horizontal label">{{Year}}</div>
+            <strong>Plot: </strong> {{Plot}}
+        </p>
+        <p>
+          <strong>Actors: </strong> {{Actors}}
+        </p>
+      </div>
+    </script>
+
+
+<div id="name">
+  {{formatTime time}}
+</div>
+
     <script src="app.js"></script>
   </body>
 </html>
